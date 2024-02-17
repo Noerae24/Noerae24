@@ -1,126 +1,74 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Member </title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-  
-  <!---pop up alert toastr-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  
-    <!---pop up alert jsdeliber-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<html lang="en" dir="ltr">
+  <head> <meta charset="UTF-8"> <meta property="og:image" content="https://od.lk/f/MjNfMjA2NzkzOTRf" >
+   <title> VIP ORG </title>
+    <link rel="stylesheet" href="css/Vip org.css">
+<link rel="stylesheet" href="css/pop random.css">
+
+    
+
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+
+          <div class="potrait">
+          <img src="img/potrait.jpg"></div>
+
+ <body>
+    <div itemprop="image" itemscope="itemscope" itemtype="http://schema.org/ImageObject">
+
+  <section class="about" id="about">
+   <!--<div class="content"><div class="title">--><img src="https://raw.githubusercontent.com/Noerae24/Noerae24/Orens/NX.jpg" class="logo"><span><!--NOERAE STUDIO-->
+  </section>
+
+
+  <section class="skills" id="skills">
+    <a href="https://youtube.com/c/NOERAESTUDIO">
+       <div class="text-one "> VIP ORG & Music Studio </div>
+       <div class="text-four" id="noerae"> Tulis id di kolom comentar  </div></a>
+  </section>
+<iframe src="https://625f0c2b-feef-47d8-bd9c-daebbd423300-00-kq4ry3sutkyh.picard.replit.dev/"></iframe>
+  <!-- My Services Section Start --> 
+  <div class="text">
   <div class="wrapper">
-    <header>Login Member</header>
-    <form action="#">
-      <div class="field nama">
-        <div class="input-area">
-          <input type="text" id="nama" placeholder="Nama">
-          <i class="icon fas fa-envelope"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
+    <ul class="dynamic-txts">
+            <li><span>Wajib subscribe dan follow..!!! </span></li>
+                  <li><span>medsos di bawah 👇</span></li>
+     
+           <li><span>agar cepat di bantu vip</span></li> <li><span>admin akan membalas Comentar kamu</span></li>
+      <li><span>nanti  jika code vip org kamu sudah siap..! 
+       </span></li></ul>
+     </div></div>
+      <div class="icon-menu">
+
+
+    <a href="https://api.whatsapp.com/send?phone=6285869282827&amp;text=Permisi,%20saya%20dapat%20nomor%20ini%20dari%20facebook%20,tolong%20di%20bantu%20vip%20mas.%20""><img src="https://raw.githubusercontent.com/Noerae24/Noerae24/Orens/WhatsApp.png" class="button" data-src="sound/menu.wav"><br>WhatsApp </a> 
+
+  <a href="https://youtube.com/@NOERAESTUDIO?si=xDL8KC-7GRpuVRbi"><img src="https://raw.githubusercontent.com/Noerae24/Noerae24/Orens/yt.png" class="button" data-src="sound/menu.wav"><br>YouTube</a> 
+  <a href="https://www.facebook.com/Skinorgcollection?mibextid=ZbWKwL"><img src="https://raw.githubusercontent.com/Noerae24/Noerae24/Orens/fb.png" class="button" data-src="sound/menu.wav"><br>Facebook</a> 
+  <a href="https://www.tiktok.com/@noeraez?_t=8ij8clV7Y8n&_r=1"><img src="https://raw.githubusercontent.com/Noerae24/Noerae24/Orens/TikTok.png" class="button" data-src="sound/timer.wav"><br>Tik Tok</a>
+  <a href="https://www.instagram.com/noeraez?igsh=MWJzZXkzdGd3a3p0Yg=="><img src="https://raw.githubusercontent.com/Noerae24/Noerae24/Orens/ig.png"class="button" data-src="sound/menu.wav"><br>Instagram </a> 
+  
+  
+  
+  
+</div>
+
+        <div class="popr">
+            <a id="poprLink" href="" target="_blank">
+                <img src="" alt="Foto Pop-up" id="poprImage" />
+            </a>
+            <div class="closeButton">&times;</div>
         </div>
-        <div class="error error-txt" id="namaError">Nama tidak boleh kosong</div>
-      </div>
-      <div class="field profile ">
-        <div class="input-area">
-          <input type="text" placeholder="Id ORG " id="alamat">
-          <i class="icon fas fa-lock"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
-        </div>
-        <div class="error error-txt" id="alamatError">Id ORG tidak boleh kosong</div>
-      </div>
+    <script src="js/pop random.js"></script>
 
-      <input type="submit" value="Login">
-    </form>
-   
-  </div>
 
-  <script src="jsdelivr.js"></script>
-  <script>
-
-// Mendapatkan elemen tombol login
-var loginButton = document.querySelector('input[type="submit"]');
-
-// Mendefinisikan variabel hitungan
-var count = 0;
-var countdown = 360; // Mengubah waktu tunggu menjadi 1 jam (60 menit)
-
-// Mendefinisikan fungsi untuk menampilkan popup alert
-function showAlert() {
-  // Menampilkan alert menggunakan alert
-  alert('Anda terlalu banyak mencoba');
-
-  // Menonaktifkan tombol login
-  loginButton.disabled = true;
-
-  // Menginisialisasi interval untuk mengaktifkan kembali tombol login setelah 1 jam
-  var interval = setInterval(function() {
-    // Mengurangi waktu hitungan mundur
-    countdown--;
-
-    // Mengupdate teks pada tombol login dengan waktu hitungan mundur
-    var minutes = Math.floor(countdown / 60);
-    var seconds = countdown % 60;
-    loginButton.value = 'Tunggu ' + minutes + ' menit ' + seconds + ' detik';
-
-    // Menghentikan interval jika waktu hitungan mundur mencapai 0
-    if (countdown === 0) {
-      // Mengaktifkan kembali tombol login
-      loginButton.disabled = false;
-
-      // Menghapus teks pada tombol login
-      loginButton.value = 'Login';
-
-      // Menghentikan interval
-      clearInterval(interval);
-    }
-  }, 1000);
-}
-
-// Menambahkan event listener untuk tombol login
-loginButton.addEventListener('click', function() {
-  // Meningkatkan hitungan setiap kali tombol login ditekan
-  count++;
-
-  // Memeriksa jika hitungan mencapai 5
-  if (count === 5) {
-    // Memanggil fungsi untuk menampilkan popup alert
-    showAlert();
-
-    // Mengatur ulang hitungan dan waktu hitungan mundur
-    count = 0;
-    countdown = 360; // Mengubah waktu tunggu menjadi 1 jam (60 menit)
-  }
-});
-
-    </script>
-  <script>
-      // Mendefinisikan fungsi untuk menampilkan popup alert
-    function showAlert() {
-      // Menampilkan alert menggunakan SweetAlert2
-      Swal.fire({
-        icon: 'warning',
-        title: 'Terlalu banyak mencoba',
-        text: 'Silakan coba lagi setelah 1 jam',
-        timer: 3600000, // Timer dalam milidetik (1 jam = 3600000 milidetik)
-        timerProgressBar: true,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        allowEnterKey: false,
-        showConfirmButton: false
-      }).then(function() {
-        // Mengaktifkan kembali tombol login setelah 1 jam
-        loginButton.disabled = false;
-        loginButton.value = 'Login';
-      });
-
-  </script>
-
+      
 </body>
+<footer>
+  <div class="text">
+<!--<span>Created By <a href="https://youtube.com/c/NOERAESTUDIO">NOERAE </a> | &#169; 2023</span>-->
+ </div>
+</footer>
 </html>
