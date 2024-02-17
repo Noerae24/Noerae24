@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Member </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  
+  <!---pop up alert toastr-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  
+    <!---pop up alert jsdeliber-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <header>Login Member</header>
+    <form action="#">
+      <div class="field nama">
+        <div class="input-area">
+          <input type="text" id="nama" placeholder="Nama">
+          <i class="icon fas fa-envelope"></i>
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+        </div>
+        <div class="error error-txt" id="namaError">Nama tidak boleh kosong</div>
+      </div>
+      <div class="field profile ">
+        <div class="input-area">
+          <input type="text" placeholder="Id ORG " id="alamat">
+          <i class="icon fas fa-lock"></i>
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+        </div>
+        <div class="error error-txt" id="alamatError">Id ORG tidak boleh kosong</div>
+      </div>
+
+      <input type="submit" value="Login">
+    </form>
+   
+  </div>
+
+  <script src="jsdelivr.js"></script>
+  <script>
+
+// Mendapatkan elemen tombol login
+var loginButton = document.querySelector('input[type="submit"]');
+
+// Mendefinisikan variabel hitungan
+var count = 0;
+var countdown = 360; // Mengubah waktu tunggu menjadi 1 jam (60 menit)
+
+// Mendefinisikan fungsi untuk menampilkan popup alert
+function showAlert() {
+  // Menampilkan alert menggunakan alert
+  alert('Anda terlalu banyak mencoba');
+
+  // Menonaktifkan tombol login
+  loginButton.disabled = true;
+
+  // Menginisialisasi interval untuk mengaktifkan kembali tombol login setelah 1 jam
+  var interval = setInterval(function() {
+    // Mengurangi waktu hitungan mundur
+    countdown--;
+
+    // Mengupdate teks pada tombol login dengan waktu hitungan mundur
+    var minutes = Math.floor(countdown / 60);
+    var seconds = countdown % 60;
+    loginButton.value = 'Tunggu ' + minutes + ' menit ' + seconds + ' detik';
+
+    // Menghentikan interval jika waktu hitungan mundur mencapai 0
+    if (countdown === 0) {
+      // Mengaktifkan kembali tombol login
+      loginButton.disabled = false;
+
+      // Menghapus teks pada tombol login
+      loginButton.value = 'Login';
+
+      // Menghentikan interval
+      clearInterval(interval);
+    }
+  }, 1000);
+}
+
+// Menambahkan event listener untuk tombol login
+loginButton.addEventListener('click', function() {
+  // Meningkatkan hitungan setiap kali tombol login ditekan
+  count++;
+
+  // Memeriksa jika hitungan mencapai 5
+  if (count === 5) {
+    // Memanggil fungsi untuk menampilkan popup alert
+    showAlert();
+
+    // Mengatur ulang hitungan dan waktu hitungan mundur
+    count = 0;
+    countdown = 360; // Mengubah waktu tunggu menjadi 1 jam (60 menit)
+  }
+});
+
+    </script>
+  <script>
+      // Mendefinisikan fungsi untuk menampilkan popup alert
+    function showAlert() {
+      // Menampilkan alert menggunakan SweetAlert2
+      Swal.fire({
+        icon: 'warning',
+        title: 'Terlalu banyak mencoba',
+        text: 'Silakan coba lagi setelah 1 jam',
+        timer: 3600000, // Timer dalam milidetik (1 jam = 3600000 milidetik)
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false
+      }).then(function() {
+        // Mengaktifkan kembali tombol login setelah 1 jam
+        loginButton.disabled = false;
+        loginButton.value = 'Login';
+      });
+
+  </script>
+
+</body>
+</html>
