@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Finger+Paint&family=Roboto+Slab:wght@300&display=swap"
+      rel="stylesheet"
+    />
+<style>
+@media only screen and (orientation:landscape) {
+Body{
+    display: none ;}
+  #turn { display:block; }
+
+  #container { display:none; }
+}
+
+body{
+  background-color: #000 ;
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+}
+main{
+    display: block ;
+    justify-content: center;
+padding-bottom: -100px;
+z-index: 11;
+    position: relative ;
+}
+
+#title{
+    font-family: 'Bad Script', 'cursive';
+    color: #fff ;
+    Margin-top:-5px ;
+    padding-top: -20px ;
+    
+}
+#status{
+  position: fixed ;
+  Z-index :10;
+  Margin-top: -70px ;
+  color: #fff ;
+  text-align: center ;
+}
+section{
+    text-align: center;
+    padding: 5px;
+    background: #555;
+}
+
+#field{
+    padding: 30px;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 100%;
+    margin-left : -9px;
+   
+}
+
+.cell{
+    font-family: 'Finger Paint', 'cursive';
+    color: #000 ;
+    font-size: 60px;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 0 2px #fff ;
+    cursor: pointer;
+    line-height: 100px;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.2);
+
+border-radius: 10px;
+
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3); 
+}
+
+
+.cell:hover {
+
+    font-family: 'Finger Paint', 'cursive';
+
+    color: #000 ;
+    font-size: 60px;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 0 1px #fff ;
+    cursor: pointer;
+    line-height: 100px;
+    background: #a6a6a6 ;
+
+}
+
+
+#sidebar{
+  Padding :17px ;
+    width: 90%;
+    display: flex;
+    flex-direction:none;
+    justify-content: space-between;
+}
+
+#player { flex: 1; }
+#turns { 
+  color: #6b9954 ;
+  justify-content: flex ;
+position: fixed ;
+  Padding-left :250px ;
+  Margin-top: -55px ;
+}
+#status { flex: 1; }
+
+#player1, #player2 {
+width:100px;
+    background: #555;
+    color: #fff ;
+    border-radius: 4px;
+    padding-top: 1px;
+    
+}
+
+#titleTurn{
+    font-size: .8em;
+}
+
+#numberTurn{
+    font-size: 1.4em;
+    font-weight: bold;
+    font-family: 'Finger Paint', 'cursive';
+  
+}
+
+#restart{
+  width: 10px;
+    flex: 1;
+      margin: 1px auto;
+    Margin-left : -10px ;
+    font-size: 18px;
+    display: block;
+    background:  #222;
+    border: 1px solid #222;
+    color: #fff;
+    text-shadow: 0px 1px 0 #000;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button{
+    padding: 5px 10px !important;
+}
+
+button:hover{
+    font-size: 20px !important;
+    font-weight: bold;
+    color: #6b9954 !important;
+    padding: 5px 10px !important;
+    margin: 0px;
+}
+
+
+#popup {
+height: 400px;
+ Position: fixed;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  padding: 400px  ;
+  z-index: 99999;
+  background-color: #555 ;
+
+}
+#popup-content .button {
+  
+  background-color: #ff0000;
+  border: 1px solid #222;
+  padding: 20px 60px;
+  width: 100px ;
+}
+      #popup-content {
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        padding: 25px 50px ;
+        border-radius: 7px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+ background: rgba(255, 255, 255, 0.2);
+border-radius: 7px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+
+</style>
+
+  </head>
+
+  <body>
+
+    
+    <div id="popup" style="display:none;">
+      
+      <div id="popup-content">
+      <p>Tic Tac Toe </p>
+      <button onclick="closePopup()"class="button"data-src="sound/timer.wav">Play Game </button>
+    </div>
+    </div>
+    <h1 id="title">X vs O</h1>
+    <main>
+                   <div id="turns">
+
+          <div id="titleTurn">Langkah</div>
+
+          <div id="numberTurn">0</div>
+        </div>
+      <section id="field">
+                <h2 id="status"></h2>
+
+     
+        <div id="container">
+          <div id="0" class="cell"></div>
+          <div id="1" class="cell"></div>
+          <div id="2" class="cell"></div>
+          <div id="3" class="cell"></div>
+          <div id="4" class="cell"></div>
+          <div id="5" class="cell"></div>
+          <div id="6" class="cell"></div>
+          <div id="7" class="cell"></div>
+          <div id="8" class="cell"></div>
+        </div>
+      </section>
+
+      <section id="sidebar">
+        <div id="player">
+          <div id="player1">X</div>
+          <div id="player2">O</div>
+        </div>
+
+        <button id="restart" >ULANGI </button>
+      </section>
+    </main>
+    <audio id="myAudio" loop>
+
+  <source src="" type="audio/mpeg">
+
+</audio>
+               <script>
+                   function showPopup() {
+        document.getElementById("popup").style.display = "block";
+      }
+
+      function closePopup() {
+        document.getElementById("popup").style.display = "none";
+      }
+
+      window.onload = showPopup;    
+                 
+               </script>
+    <script>
+'use strict';
+
+
+
+// status-> what is the result of match
+const statusDisplay = document.querySelector('#status');
+const count = document.querySelector('#numberTurn');
+
+// basic required variables
+let gameActive = true;
+let currentPlayer = "X";
+let gameState = ["", "", "", "", "", "", "", "", ""];
+// making game state black means new game
+
+// match winner
+const winnMessage = () => `${currentPlayer} Menang !`;
+const drawMessage = () => `imbang !`; 
+
+// winning lines
+const winnLines = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+];
+
+//handle the turns of players
+function handlePlayerTurn() {
+  const p1 = document.querySelector('#player1'),
+        p2 = document.querySelector('#player2');
+
+  if (currentPlayer === 'X') {
+    p1.style.background = '#6b9954';
+    p2.style.background = '#000';
+  } else {
+    p1.style.background = '#000';
+    p2.style.background = '#6b9954';
+  }
+};
+
+//handling clicks of players
+function handleClick(event) {
+  let clickedIndex = Number(event.target.getAttribute('id'));
+
+  if (gameState[clickedIndex] !== '' || !gameActive)
+    return;
+  gameState[clickedIndex] = currentPlayer;
+  event.target.innerHTML = currentPlayer;
+  count.innerHTML = +count.innerHTML + 1;
+  handleResult(); 
+}
+
+document.querySelectorAll('.cell')
+        .forEach(cell => cell.addEventListener('click', handleClick));
+// Firstly it will show only X, beacuse till now we currentPlayer = "X" that's why is playing only "X"
+
+
+//game result
+function handleResult() {
+    let roundWon = false,
+        winLine, a ,b, c, i;
+
+    for (i = 0; i < 8; ++i) {
+      winLine = winnLines[i];
+      a = gameState[winLine[0]];
+      b = gameState[winLine[1]];
+      c = gameState[winLine[2]];
+      if (a === b && b === c && c !== '') {
+        roundWon = true;
+        break;
+      }
+    }
+
+    if (roundWon || !gameState.includes('')) {
+      if (roundWon) {
+        statusDisplay.innerHTML = winnMessage();
+        statusDisplay.style.color = '#FF0000';
+        winColors(winLine)
+      }
+      else
+        statusDisplay.innerHTML = drawMessage();
+      gameActive = false;
+      return;
+    }
+
+    currentPlayer = currentPlayer === "X" ? "0" : "X";
+    handlePlayerTurn();
+}
+
+
+// winner line color
+function winColors(line) {
+  console.log(`${line}`);
+  for (let i = 0; i < 3; ++i) {
+    let cell = document.getElementById(`${line[i]}`);
+    cell.style.color = '#fff ';
+    cell.style.fontSize = '50px';
+  }
+}
+
+// Restart the Game
+function handleRestart() {
+    gameActive = true;
+    currentPlayer = 'X';
+    count.innerHTML = '0';
+    statusDisplay.innerHTML = '';
+    statusDisplay.style.color = 'black';
+    gameState = ['', '', '', '', '', '', '', '', ''];
+    // making game state empty means new game
+    handlePlayerTurn();
+ 
+    document.querySelectorAll('.cell').forEach(cell => {
+      cell.innerHTML = "";
+      cell.style.color = '#000';
+      cell.style.fontSize = '50px'});
+}
+
+handlePlayerTurn();
+
+document.querySelector('#restart').addEventListener('click', handleRestart);
+
+      
+    </script>
+
+        <script>
+          
+          var audio = document.getElementById("myAudio");
+  var buttons = document.getElementsByClassName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function() {
+      audio.src = this.getAttribute("data-src");
+      audio.load();
+      audio.play();
+    });
+  }
+        </script>
+
+  </body>
+</html>
